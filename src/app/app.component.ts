@@ -33,6 +33,25 @@ export class AppComponent  {
       .catch(this.handleError);
 
   }
+  
+  getLoginStatus() {
+    this.fb.getLoginStatus()
+      .then(console.log.bind(console))
+      .catch(console.error.bind(console));
+  }
+
+
+  /**
+   * Get the user's profile
+   */
+  getProfile() {
+    this.fb.api('/me')
+      .then((res: any) => {
+        console.log('Got the users profile', res);
+      })
+      .catch(this.handleError);
+  }
+  
   private handleError(error) {
     console.error('Error processing action', error);
   }
